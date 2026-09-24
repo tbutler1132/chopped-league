@@ -2,7 +2,7 @@
   "name": "chopped-league",
   "version": "2.0.0",
   "private": true,
-  "description": "Chopped Fantasy Football \u2014 static ESPN elimination-league dashboard",
+  "description": "Chopped Fantasy Football — static ESPN elimination-league dashboard",
   "type": "module",
   "engines": {
     "node": ">=18"
@@ -12,7 +12,6 @@
     "week": "node scripts/week.js",
     "elimination": "node scripts/elimination.js",
     "current-week": "node scripts/current-week.js",
-    "serve": "npx --yes serve .",
-    "test": "node --test"
+    "serve": "npx --yes serve ."
   }
 }

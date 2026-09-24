@@ -207,6 +207,3 @@ el("season").textContent = season;
 
 refresh();
 setInterval(refresh, REFRESH_MS);
-
-// Preserve custom league and season when opening historical rankings.
-el("history-link").href = `worst.html?${new URLSearchParams({ league: leagueId, season })}`;

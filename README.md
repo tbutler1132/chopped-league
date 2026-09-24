@@ -3,7 +3,7 @@
 A read-only dashboard for an ESPN fantasy football elimination league: every
 week, the lowest-scoring active team gets chopped.
 
-The site is fully static. The live dashboard talks to ESPN's public fantasy API straight
+The site is fully static. The page talks to ESPN's public fantasy API straight
 from the browser, so there is no server, no build step, and no scheduled job —
 GitHub Pages can host it as-is.
 
@@ -55,7 +55,7 @@ npm start               # both of the first two, in order
 
 ## How elimination works
 
-For the live guillotine dashboard, ESPN is the source of truth and nothing is cached to disk. On every load the
+ESPN is the source of truth and nothing is cached to disk. On every load the
 app fetches the league once and replays the season:
 
 - Each week before the current one is checked; a week counts as `FINAL` only
@@ -67,45 +67,3 @@ app fetches the league once and replays the season:
 
 While a week is live, standings and the chopping block are ranked by ESPN's
 live projections; once the week is final they rank by actual score.
-
-## Hall of Shame
-
-Open `worst.html` from the dashboard for historical manager rankings. The default
-range is 2018 through the selected season, with up to 10 seasons per comparison.
-Custom links support `worst.html?league=781990&season=2026&from=2018`.
-
-The 0–100 Shame Index combines all-play losses (30%), bottom-quarter finishes
-(20%), last-place finishes (15%), shortfall below the weekly median (15%), worst
-three weeks (10%), and below-median weeks (10%). Higher scores mean worse results.
-Factors, weighted contributions, team names, and recorded scores are visible.
-
-Historical rankings are independent of the guillotine side competition. All
-recorded finalized scores count, including playoffs and consolation games. A
-missing team receives no result for that week, not zero points. Comparisons use
-the recorded field; limited coverage and skipped invalid weeks are disclosed.
-Each scored week carries equal weight. Fewer than five weeks is a small sample.
-
-`assets/league-history.json` contains the supplied 2018–2025 ESPN export for league
-781990. It includes manager names and matchup scores and will be publicly
-readable when the site is deployed. Original source files remain unchanged.
-Refresh the asset with:
-
-```
-python3 scripts/import-history.py /path/to/league_781990_history
-```
-
-The importer reads `all_standings.csv` and `all_matchups.csv`, checks team joins,
-normalizes owner names, and includes only seasons with matchups. Use completed
-season exports: CSVs do not carry a matchup-finality flag. The supplied 2026
-preseason standings are not imported as results. Unarchived seasons use the
-public ESPN API with a 20-second timeout. Archived seasons need no ESPN login.
-
-Managers join across seasons using complete normalized owner-name groups,
-including current ESPN member names when available. Duplicate owner names,
-case, and spacing are normalized; unknown identities remain separate. Names
-are not immutable IDs: a real name change or shared name may require a curated
-mapping. Team names are never used to guess manager identity.
-
-`assets/history-core.js` calculates rankings; `assets/history-source.js` selects
-the source; `assets/history.js` renders the page. Run `npm test` for regression
-and archive integrity tests. The live guillotine dashboard is unchanged.
