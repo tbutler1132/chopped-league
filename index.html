@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Chopped Fantasy Football</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔪</text></svg>">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>THE LEAGUE — GUILLOTINE</h1>
+    <p>Fantasy Football Elimination League • ESPN League <span id="league-id">781990</span> • <span id="season">2026</span></p>
+</div>
+
+<div class="container">
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="stat-label">Current Week</div>
+            <div class="stat-value" id="stat-week">—</div>
+        </div>
+
+        <div class="card">
+            <div class="stat-label">Week Status</div>
+            <div class="stat-value" id="stat-status">—</div>
+        </div>
+
+        <div class="card">
+            <div class="stat-label">Teams Remaining</div>
+            <div class="stat-value" id="stat-remaining">—</div>
+        </div>
+
+        <div class="card">
+            <div class="stat-label">Teams Eliminated</div>
+            <div class="stat-value" id="stat-eliminated">—</div>
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <div class="section-title">
+            <h2>⚠️ Danger Zone</h2>
+            <span>Bottom 3 active teams</span>
+        </div>
+
+        <div class="card danger" id="danger-zone">
+            <div class="empty">Loading…</div>
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <div class="section-title">
+            <h2>🔥 Chopping Block</h2>
+            <span>Lowest active score</span>
+        </div>
+
+        <div id="chopping-block">
+            <div class="card empty">Loading…</div>
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <div class="section-title">
+            <h2>📊 Weekly Standings</h2>
+            <span>ESPN scores</span>
+        </div>
+
+        <div class="card" id="standings">
+            <div class="empty">Loading…</div>
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <div class="section-title">
+            <h2>☠️ Eliminated Teams</h2>
+            <span>Season history</span>
+        </div>
+
+        <div class="card" id="eliminated-teams">
+            <div class="empty">Loading…</div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        CHOPPED • ESPN is the source of truth • Read-only dashboard
+        <span class="updated" id="updated"></span>
+    </div>
+
+</div>
+
+<script type="module" src="assets/app.js"></script>
+
+</body>
+</html>

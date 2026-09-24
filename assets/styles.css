@@ -1,0 +1,285 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b1120;
+    color: #f9fafb;
+}
+
+.header {
+    background: linear-gradient(135deg, #111827, #1e293b);
+    padding: 28px 35px;
+    border-bottom: 1px solid #334155;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.header p {
+    margin: 8px 0 0;
+    color: #94a3b8;
+}
+
+.container {
+    max-width: 1250px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: #111827;
+    border: 1px solid #334155;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.18);
+}
+
+.stat-label {
+    color: #94a3b8;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.live {
+    color: #facc15;
+}
+
+.final {
+    color: #4ade80;
+}
+
+.section {
+    margin-top: 32px;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.section-title h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.section-title span {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.chopping {
+    border: 1px solid #dc2626;
+    background: linear-gradient(135deg, #3f1111, #111827);
+}
+
+.danger {
+    border: 1px solid #f59e0b;
+}
+
+.team-row {
+    display: grid;
+    grid-template-columns: 45px 1fr 120px 120px;
+    gap: 15px;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #263244;
+}
+
+.team-row:last-child {
+    border-bottom: none;
+}
+
+.rank {
+    color: #64748b;
+    font-weight: bold;
+}
+
+.team-name {
+    font-weight: 700;
+}
+
+.score {
+    text-align: right;
+    font-weight: 700;
+}
+
+.projection {
+    text-align: right;
+    color: #94a3b8;
+}
+
+.bar {
+    height: 7px;
+    background: #263244;
+    border-radius: 10px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: #ef4444;
+    border-radius: 10px;
+}
+
+.eliminated {
+    display: grid;
+    grid-template-columns: 1fr 100px 120px;
+    gap: 15px;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.badge-live {
+    background: #422006;
+    color: #fbbf24;
+}
+
+.badge-final {
+    background: #052e16;
+    color: #4ade80;
+}
+
+.empty {
+    color: #64748b;
+    padding: 20px 0;
+}
+
+.error {
+    border: 1px solid #dc2626;
+    color: #fca5a5;
+}
+
+.footer {
+    text-align: center;
+    color: #475569;
+    padding: 40px 0;
+    font-size: 12px;
+}
+
+.footer .updated {
+    display: block;
+    margin-top: 6px;
+}
+
+@media (max-width: 850px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-row {
+        grid-template-columns: 35px minmax(120px, 1fr) auto auto;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .team-name {
+        min-width: 0;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    .projection {
+        display: block;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .score {
+        font-size: 14px;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 550px) {
+    .team-row {
+        grid-template-columns: 28px minmax(0, 1fr) auto;
+        gap: 8px;
+    }
+
+    .team-row .projection {
+        grid-column: 2 / 4;
+        text-align: left;
+        margin-top: -4px;
+        font-size: 13px;
+    }
+
+    .team-row .score {
+        text-align: right;
+        font-size: 14px;
+    }
+
+    .team-name {
+        line-height: 1.2;
+        hyphens: auto;
+        overflow-wrap: break-word;
+    }
+
+    .cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .header {
+        padding: 22px;
+    }
+
+    .header h1 {
+        font-size: 25px;
+    }
+
+    .container {
+        padding: 0 12px;
+    }
+
+    .team-row.eliminated {
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            "name score"
+            "week score";
+        gap: 6px 16px;
+        align-items: center;
+    }
+
+    .team-row.eliminated .team-name {
+        grid-area: name;
+    }
+
+    .team-row.eliminated > div:nth-child(2) {
+        grid-area: week;
+        color: #94a3b8;
+        font-size: 14px;
+    }
+
+    .team-row.eliminated .score {
+        grid-area: score;
+        font-size: 18px;
+        font-weight: 700;
+    }
+}
