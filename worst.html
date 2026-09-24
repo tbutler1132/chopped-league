@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hall of Shame • Chopped Fantasy Football</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔪</text></svg>">
+</head>
+<body>
+<header class="header">
+    <h1>HALL OF SHAME</h1>
+    <p>Bad weeks leave a paper trail. Find the league’s worst historical performer.</p>
+    <nav class="site-nav" aria-label="Main navigation"><a id="dashboard-link" href="index.html">Live dashboard</a><a href="worst.html" aria-current="page">Hall of Shame</a></nav>
+</header>
+<main class="container history-page">
+    <form id="history-form" class="card history-controls">
+        <label>First season<input id="from-season" name="from" type="number" min="2018" required></label>
+        <label>Last season<input id="to-season" name="season" type="number" min="2018" required></label>
+        <button type="submit" id="load-history">Calculate rankings</button>
+        <p>Up to 10 seasons per comparison • League <span id="league-id"></span></p>
+    </form>
+    <p id="history-status" role="status" aria-live="polite">Loading historical ESPN scores…</p>
+    <div id="coverage" class="coverage"></div>
+    <section id="verdict" class="card chopping" aria-labelledby="verdict-title"><h2 id="verdict-title">Following the evidence…</h2></section>
+    <section class="section" aria-labelledby="ranking-title">
+        <div class="section-title"><h2 id="ranking-title">The rankings</h2><span>Higher index = worse results</span></div>
+        <div class="card table-scroll" tabindex="0" role="region" aria-label="Historical rankings, scroll horizontally on small screens">
+            <table class="history-table"><thead><tr><th scope="col">Rank</th><th scope="col">Manager / team</th><th scope="col">Shame index</th><th scope="col">Seasons</th><th scope="col">Scored weeks</th><th scope="col">Avg. points</th></tr></thead><tbody id="rankings"></tbody></table>
+        </div>
+    </section>
+    <section class="section card" aria-labelledby="method-title">
+        <h2 id="method-title">How the verdict is calculated</h2>
+        <p>The Shame Index is a weighted score from 0 to 100. These six overlapping signals emphasize repeated poor scoring; the weights are a league debate starter, not an objective measure of skill.</p>
+        <div id="method-factors" class="factor-grid"></div>
+        <p>All recorded finalized scores count throughout the season, including playoffs and consolation games. Guillotine results do not remove anyone from this ranking. Each week is compared with its recorded scoring field. Teams absent from a playoff week receive no result for that week, and limited coverage is shown above. Conflicting or missing scores cause that week to be skipped.</p>
+        <p>The 2018–2025 seasons come from the supplied ESPN export; other seasons use ESPN’s public API. Historical manager names are matched after normalizing case, spacing, and duplicate names. Current ESPN member names join to that history when the complete owner group matches. Unresolved identities stay separate; team-name changes alone never link managers.</p>
+        <p>Each scored week carries equal weight. Fewer than five weeks is marked “Small sample.” Average points are shown for context; the index compares results within each week. Live projections and unavailable injury or lineup-efficiency data are not used.</p>
+    </section>
+    <section class="section" aria-labelledby="breakdown-title"><h2 id="breakdown-title">Show your work</h2><p>Open a team to inspect its factors and historical scores.</p><div id="breakdowns"></div></section>
+    <footer class="footer">CHOPPED • ESPN historical scores • A league ranking, not a personal verdict</footer>
+</main>
+<script type="module" src="assets/history.js"></script>
+</body>
+</html>
